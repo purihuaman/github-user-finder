@@ -23,10 +23,10 @@ export default {
 <template>
 	<form
 		action="#"
-		class="w-75 row mx-auto p-4 bg-darsk rounded shadow"
+		class="row mx-auto p-3 bg-darsk rounded shadow form"
 		v-on:submit.prevent="onSubmit"
 	>
-		<fieldset class="col-12 col-sm-9">
+		<fieldset class="col-12 col-sm-9 p-0">
 			<input
 				type="search"
 				name="user"
@@ -39,8 +39,14 @@ export default {
 			/>
 		</fieldset>
 
-		<fieldset class="col-12 col-sm-3 text-center">
+		<fieldset class="col-12 col-sm-3 text-center p-0">
 			<input type="submit" value="Buscar" class="btn btn-primary" />
 		</fieldset>
 	</form>
 </template>
+
+<style>
+.form {
+	max-width: 600px;
+}
+</style>

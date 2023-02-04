@@ -1,18 +1,26 @@
 <script>
 export default {
 	name: "GithubIcon",
+	data() {
+		return {
+			styleObject: {
+				stroke: "var(--bs-link-color) !important",
+			},
+		};
+	},
 };
 </script>
 
 <template>
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		class="icon icon-tabler icon-tabler-brand-github"
+		class="icon icon-tabler icon-tabler-brand-github github"
 		width="44"
 		height="44"
 		viewBox="0 0 24 24"
 		stroke-width="1.5"
 		stroke="#ffffff"
+		:style="styleObject"
 		fill="none"
 		stroke-linecap="round"
 		stroke-linejoin="round"
@@ -25,8 +33,16 @@ export default {
 </template>
 
 <style scoped>
-svg {
-	height: 28px;
-	width: 28px;
+.github {
+	--size-icon: 28px;
+	height: var(--size-icon);
+	width: var(--size-icon);
+	display: block;
+
+	transition: height 300ms ease;
+}
+
+.github:hover {
+	--size-icon: 30px;
 }
 </style>

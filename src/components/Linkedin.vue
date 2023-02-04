@@ -1,6 +1,6 @@
 <script>
 export default {
-	name: "EyeIcon",
+	name: "Linkedin",
 	data() {
 		return {
 			styleObject: {
@@ -14,7 +14,7 @@ export default {
 <template>
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		class="icon icon-tabler icon-tabler-eye eye"
+		class="icon icon-tabler icon-tabler-brand-linkedin linkedin"
 		width="44"
 		height="44"
 		viewBox="0 0 24 24"
@@ -26,15 +26,16 @@ export default {
 		stroke-linejoin="round"
 	>
 		<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-		<circle cx="12" cy="12" r="2" />
-		<path
-			d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"
-		/>
+		<rect x="4" y="4" width="16" height="16" rx="2" />
+		<line x1="8" y1="11" x2="8" y2="16" />
+		<line x1="8" y1="8" x2="8" y2="8.01" />
+		<line x1="12" y1="16" x2="12" y2="11" />
+		<path d="M16 16v-3a2 2 0 0 0 -4 0" />
 	</svg>
 </template>
 
-<style scoped>
-.eye {
+<style>
+.linkedin {
 	--size-icon: 28px;
 	height: var(--size-icon);
 	width: var(--size-icon);
@@ -43,7 +44,7 @@ export default {
 	transition: height 300ms ease;
 }
 
-.eye:hover {
+.linkedin:hover {
 	--size-icon: 30px;
 }
 </style>

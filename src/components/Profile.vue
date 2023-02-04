@@ -135,7 +135,7 @@ export default {
 									target="_blank"
 									class="d-flex flex-column align-items-center justify-content-center text-primary text-decoration-none"
 								>
-									<Twitter style="height: 32px; width: 32px" />
+									<Twitter />
 									@{{ user.twitter }}
 								</a>
 							</div>

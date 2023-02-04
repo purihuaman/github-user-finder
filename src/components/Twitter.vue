@@ -14,7 +14,7 @@ export default {
 <template>
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		class="icon icon-tabler icon-tabler-brand-twitter twitter text-primary"
+		class="icon icon-tabler icon-tabler-brand-twitter twitter text-primary twitter__icon"
 		width="32"
 		height="32"
 		viewBox="0 0 24 24"
@@ -32,4 +32,17 @@ export default {
 	</svg>
 </template>
 
-<style></style>
+<style>
+.twitter__icon {
+	--size-icon: 28px;
+	height: var(--size-icon);
+	width: var(--size-icon);
+	display: block;
+
+	transition: height 300ms ease;
+}
+
+.twitter__icon:hover {
+	--size-icon: 30px;
+}
+</style>

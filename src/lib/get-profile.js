@@ -1,9 +1,9 @@
 import { repositoryApiMapper } from "./repository-api-mapper";
 
 const API = "https://api.github.com/users/";
-const getProfile = async (username = "purihuaman") => {
+const getProfile = async (username) => {
 	try {
-		const response = await fetch(API + username);
+		const response = await fetch(!username ? "purihuaman" : API + username);
 
 		if (!response.ok) {
 			return {
