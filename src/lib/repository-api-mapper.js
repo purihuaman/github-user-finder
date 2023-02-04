@@ -1,0 +1,15 @@
+export const repositoryApiMapper = (repoApiObject) => ({
+	id: repoApiObject.id,
+	avatar: repoApiObject.avatar_url,
+	name: repoApiObject.name,
+	login: repoApiObject.login,
+	linkrepo: repoApiObject.html_url,
+	joined: new Date(`${repoApiObject.created_at}`).toDateString().slice(4),
+	bio: repoApiObject.bio,
+	blog: repoApiObject.blog,
+	followers: repoApiObject.followers,
+	following: repoApiObject.following,
+	numRepos: repoApiObject.public_repos,
+	location: repoApiObject.location,
+	twitter: repoApiObject.twitter_username,
+});
