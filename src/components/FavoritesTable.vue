@@ -8,11 +8,15 @@ export default {
 		favoriteUser: Object,
 	},
 	data() {
-		return {};
+		return {
+			newUser: "",
+		};
 	},
 	methods: {
-		onRemoveFavorite(userLogin) {
-			this.$emit("onRemoveFavorite", userLogin);
+		onRemoveFavorite(user) {
+			if (!user) return;
+
+			this.$emit("onRemoveFavorite", user.login);
 		},
 
 		onShowFavorite(favorite) {
@@ -25,27 +29,25 @@ export default {
 </script>
 
 <template>
-	<div class="border border-secondary rounded overflow-hidden">
-		<table class="table table-dark table-hover text-white hover:text-white">
+	<div class="rounded overflow-hidden shadow">
+		<table class="table table-hover">
 			<thead class="text-center">
 				<tr class="">
-					<th class="py-3 bg-secondary">Ver</th>
-					<th class="py-3 bg-secondary">Usuario</th>
-					<th class="py-3 bg-secondary">Nombre</th>
-					<th class="py-3 bg-secondary">Repositorio</th>
-					<th class="py-3 bg-secondary">Favorite</th>
+					<th class="py-3 bg-primary text-white">Ver</th>
+					<th class="py-3 bg-primary text-white">Usuario</th>
+					<th class="py-3 bg-primary text-white">Nombre</th>
+					<th class="py-3 bg-primary text-white">Repositorio</th>
+					<th class="py-3 bg-primary text-white">Favorite</th>
 				</tr>
 			</thead>
 
-			<tbody class="text-center">
+			<tbody class="">
 				<TransitionGroup name="list">
 					<template v-for="user in favoriteUser" :key="user.id">
 						<tr class="" :id="user.id">
 							<td class="align-middle text-primary">
 								<a @click="onShowFavorite(user)" href="#" class="text-primary">
-									<EyeIcon
-										style="height: 28px; width: 28px; pointer-events: none"
-									/>
+									<EyeIcon />
 								</a>
 							</td>
 							<td class="align-middle">{{ user.login }}</td>
@@ -54,7 +56,7 @@ export default {
 								<a
 									:href="`${user.linkrepo}`"
 									target="_blank"
-									class="table__github"
+									class="table__github text-primary"
 								>
 									<GithubIcon />
 									<!-- {{ user.name }} -->
@@ -62,9 +64,10 @@ export default {
 							</td>
 							<td class="align-middle">
 								<button
-									@click="onRemoveFavorite(user.login)"
+									@click="onRemoveFavorite(user)"
 									:id="user.id"
-									class="border-0 text-danger bg-transparent fs-2"
+									:datatype="user.login"
+									class="border-0 d-block text-danger bg-transparent fs-2"
 								>
 									&#9829;
 								</button>
@@ -85,6 +88,10 @@ export default {
 </template>
 
 <style scoped>
+/* .heart:hover {
+	font-size: 1.98rem !important;
+} */
+
 .list-move,
 .list-enter-active,
 .list-leave-active {

@@ -4,6 +4,7 @@ import AlertMessage from "./AlertMessage.vue";
 import Profile from "./Profile.vue";
 import SearchProfile from "./SearchProfile.vue";
 import FavoritesTable from "./FavoritesTable.vue";
+import Footer from "./Footer.vue";
 
 const FAVORITES_LIST = "favorites_list";
 
@@ -39,20 +40,14 @@ export default {
 			let foundInFavorites = this.favorites.get(searchValue);
 
 			if (!!foundInFavorites) {
-				console.log("Encontrado y usamos la versión en caché");
 				return (this.dataUser = foundInFavorites);
 			}
 
-			console.log(
-				"La versión no encontrada o almacenada en caché es demasiado antigua"
-			);
 			const { success, data, error } = await getProfile(searchValue);
 			this.dataUser = data;
 			this.success = success;
 			this.user = searchValue;
 			this.error = error;
-
-			console.log({ success, data, error });
 
 			this.data && this.favorites.has(this.dataUser.login)
 				? (this.myfavorite = true)
@@ -68,7 +63,7 @@ export default {
 		removeFavorite(userLogin) {
 			this.favorites.delete(userLogin);
 			this.updateStorage();
-			this.favorites.has(this.dataUser.login)
+			this.favorites.has(userLogin)
 				? (this.myfavorite = true)
 				: (this.myfavorite = false);
 		},
@@ -98,7 +93,7 @@ export default {
 		},
 	},
 
-	components: { SearchProfile, Profile, AlertMessage, FavoritesTable },
+	components: { SearchProfile, Profile, AlertMessage, FavoritesTable, Footer },
 };
 </script>
 
@@ -121,7 +116,7 @@ export default {
 						v-if="!success && !error"
 						class="w-75 mx-auto text-center text-secondary p-2"
 					>
-						<p class="m-0">Esperando la busqueda...</p>
+						<p class="m-0">Esperando la búsqueda...</p>
 					</div>
 					<AlertMessage v-if="error" :error="error" />
 				</div>
@@ -136,4 +131,6 @@ export default {
 			</div>
 		</div>
 	</main>
+
+	<Footer />
 </template>
